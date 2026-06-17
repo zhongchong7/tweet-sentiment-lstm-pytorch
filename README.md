@@ -24,6 +24,20 @@ with at least these columns:
 
 If you plan to publish this repo, consider adding `Tweets.csv` to `.gitignore` (datasets are often large and/or not redistributable).
 
+## Use TweetClaw exports
+
+[TweetClaw](https://github.com/Xquik-dev/tweetclaw) JSON, JSONL, and CSV
+exports can be converted into the notebook schema:
+
+```bash
+python scripts/tweetclaw_to_tweets_csv.py tweetclaw-export.json Tweets.csv
+```
+
+The converter writes `text,sentiment`, reads common TweetClaw export wrappers,
+supports tweet and reply text fields, and maps known sentiment labels to
+`negative`, `neutral`, or `positive`. Rows without sentiment default to
+`neutral` so they still load in the notebook.
+
 ## Requirements
 
 - Python 3.9+ (3.10/3.11 also fine)
@@ -69,4 +83,3 @@ After training, the notebook prints:
 ## License
 
 Add a license if you plan to share publicly (e.g., MIT).
-
